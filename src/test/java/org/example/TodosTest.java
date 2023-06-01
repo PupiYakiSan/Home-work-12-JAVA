@@ -31,7 +31,7 @@ public class TodosTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    /*@Test
+    @Test
     public void TodosSearch() {
 
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
@@ -52,9 +52,9 @@ public class TodosTest {
         todos.add(epic);
         todos.add(meeting);
 
-        String[] expected = { "Позвонить родителям" };
-        Task[] actual = todos.search("Позвонить родителям");;
+        Task[] expected = { epic };
+        Task[] actual = todos.search("Молоко");;
         Assertions.assertArrayEquals(expected, actual);
-    }*/
+    }
 
 }
