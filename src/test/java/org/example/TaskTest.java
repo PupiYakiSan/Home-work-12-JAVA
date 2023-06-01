@@ -26,26 +26,6 @@ public class TaskTest {
     }
 
     @Test
-    public void TaskFalse () {
-
-        Task task = new Task(5);
-
-        boolean expected = false;
-        boolean actual = task.matches("Позвонить родителям");
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void simpleTaskGetId () {
-
-        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
-
-        int expected = 5;
-        int actual = simpleTask.getId();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
     public void epicSubtasksMatchTrue() {
 
         String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
@@ -124,6 +104,83 @@ public class TaskTest {
 
         boolean expected = false;
         boolean actual = meeting.matches("Выкатка 7й версии приложения");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TaskFalse () {
+
+        Task task = new Task(5);
+
+        boolean expected = false;
+        boolean actual = task.matches("Позвонить родителям");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void simpleTaskGetId () {
+
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+
+        int expected = 5;
+        int actual = simpleTask.getId();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void equalsFalse () {
+
+        SimpleTask simpleTask1 = new SimpleTask(5, "Позвонить родителям");
+        SimpleTask simpleTask2 = new SimpleTask(7, "Позвонить родителям");
+
+        boolean expected = false;
+        boolean actual = simpleTask1.equals(simpleTask2);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void equalsFalse2 () {
+
+        SimpleTask simpleTask = new SimpleTask(5, "Хлеб");
+
+        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        Epic epic = new Epic(5, subtasks);
+
+        boolean expected = false;
+        boolean actual = simpleTask.equals(epic);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void equalsTrue () {
+
+        SimpleTask simpleTask1 = new SimpleTask(5, "Позвонить родителям");
+        SimpleTask simpleTask2 = new SimpleTask(5, "Позвонить родителям");
+
+        boolean expected = true;
+        boolean actual = simpleTask1.equals(simpleTask2);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void hashCodeTrue () {
+
+        SimpleTask simpleTask1 = new SimpleTask(5, "Позвонить родителям");
+        SimpleTask simpleTask2 = new SimpleTask(5, "Позвонить родителям");
+
+        boolean expected = true;
+        boolean actual = simpleTask1.hashCode() == simpleTask2.hashCode();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void hashCodeFalse () {
+
+        SimpleTask simpleTask1 = new SimpleTask(5, "Позвонить родителям");
+        SimpleTask simpleTask2 = new SimpleTask(7, "Позвонить родителям");
+
+        boolean expected = false;
+        boolean actual = simpleTask1.hashCode() == simpleTask2.hashCode();
         Assertions.assertEquals(expected, actual);
     }
 
